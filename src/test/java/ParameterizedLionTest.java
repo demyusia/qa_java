@@ -9,12 +9,12 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class LionTests {
+public class ParameterizedLionTest {
     private Feline feline = new Feline();
     private String sex;
     private boolean expectedHasMane;
 
-    public LionTests(String sex, boolean hasMane) {
+    public ParameterizedLionTest(String sex, boolean hasMane) {
         this.sex = sex;
         this.expectedHasMane = hasMane;
     }
@@ -29,7 +29,7 @@ public class LionTests {
     }
 
     @Test
-    public void checkHasManeForLionTest () {
+    public void checkDoesHasManeForLion () {
         try {
             Lion lion = new Lion(feline, sex);
             boolean actualHasMane = lion.doesHaveMane();
@@ -38,13 +38,5 @@ public class LionTests {
             assertEquals("Используйте допустимые значения пола животного - самец или самка", e.getMessage());
         }
     }
-
-
-
-
-
-
-
-
 
 }
