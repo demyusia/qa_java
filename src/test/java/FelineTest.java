@@ -1,16 +1,11 @@
 import com.example.Feline;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
 
-    @Spy
     Feline feline = new Feline();
 
     @Test
@@ -29,14 +24,13 @@ public class FelineTest {
 
     @Test
     public void getKittensWithNoArgumentsCallsGetKittensWithOneKitten () {
-        feline.getKittens();
-        Mockito.verify(feline, Mockito.times(1)).getKittens(1);
+        int numberOfKittens = feline.getKittens();
+        assertEquals(1, numberOfKittens);
     }
 
     @Test
     public void eatMeatForFelineCallsGetFoodForPredator() throws Exception{
-        feline.eatMeat();
-        Mockito.verify(feline, Mockito.times(1)).getFood("Хищник");
-
+        List<String> food = feline.eatMeat();
+        assertEquals(food, List.of("Животные", "Птицы", "Рыба"));
     }
 }
